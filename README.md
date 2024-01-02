@@ -4,9 +4,11 @@
 
 The dev community claims we should be moving to Vite. It's "out of the box" capabilities seem to be enough for JS developers. Making Vite work in a PHP project with multiple CSS outputs however seems to require plenty of configuration, and fighting a system that was not designed for this purpose.
 
-My opinion may change in the future.
+My opinion may change in the future. I'm sticking with Gulp.
 
 The setup explained in this repo works! You be the judge if Vite is good enough.
+
+(Less can be easily replaced by Sass/SCSS)
 
 ## Features
 
@@ -29,7 +31,7 @@ The setup explained in this repo works! You be the judge if Vite is good enough.
 
 ## Failures
 
-:x: Full control over filenames (theme.js and theme.less will cause problems)\
+:x: Full control over filenames (its finicky, trust me)\
 :x: Separated tasks (all assets are rebuilt on every change)\
 :x: CSS changes via HMR
 
@@ -51,7 +53,9 @@ Some of these can probably be overcome by adding more modules and adding further
 
 The root of this repo should be your WordPress theme.
 
-The `hooks` folder should be (auto)loaded into your functions.php. The enqueue files contain standard code, `vite.php` is custom. To toggle Vite usage on-off you can edit the boolean at the top of `vite.php`.
+Define `WP_ENV` as `local` in your `wp-config.php`.
+
+The `hooks` folder should be (auto)loaded into your `functions.php`. The enqueue files contain standard code, `vite.php` is custom. To toggle Vite usage on-off for your site you can edit the boolean at the beginning of `vite.php`.
 
 On your development environment only, we need to install some NPM packages:
 ```
@@ -67,6 +71,6 @@ pnpm i
 | `pnpm watch` | Watch files and rebuild assets when files change. |
 
 1. In your terminal run `pnpm dev` in one tab and `pnpm watch` in another.
-1. Load your website in your browser. The Vite server will not work until the a webpage loads the Vite client JS.
+1. Load your website in your browser. The Vite server will not work until a webpage loads the Vite client JS.
 1. Start working on `js/theme.js` or `less/theme.less`.
 
